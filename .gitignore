@@ -1,0 +1,9 @@
+# scratch / run artifacts
+out*/
+*.log
+tmp/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

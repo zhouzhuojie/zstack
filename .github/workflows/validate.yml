@@ -1,0 +1,28 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/validate.py
+      - run: bash -n scripts/install.sh
+      - name: the installer must work, not just parse
+        run: |
+          mkdir -p tmp-home
+          HOME="$PWD/tmp-home" bash scripts/install.sh
+          test -d tmp-home/.agents/skills/zstack
+          for s in statechart create-formal-verification-skill maintain-formal-verification-skill; do
+            test -d "tmp-home/.agents/skills/zstack/vendor/pstack/$s"
+            test -f "tmp-home/.agents/skills/zstack/vendor/pstack/$s/LICENSE"
+            test ! -e "tmp-home/.agents/skills/$s"
+          done
+          test -f tmp-home/.zstack/models.md
+          test -f tmp-home/.zstack/tla-toolchain.md
