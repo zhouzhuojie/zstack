@@ -1,5 +1,7 @@
 # zstack
 
+[![validate](https://github.com/zhouzhuojie/zstack/actions/workflows/validate.yml/badge.svg)](https://github.com/zhouzhuojie/zstack/actions/workflows/validate.yml)
+
 A coding-agent workflow you summon with one line — `use zstack to fix
 this` — that routes the task to a playbook, follows it step by step, and
 does not claim done until your project's own verification gate is green.
@@ -125,5 +127,5 @@ Vendored at commit `f2772d528dc1f9f24bfba17d4e9f280db86857ae`
 `maintain-formal-verification-skill`, each under its own MIT license.
 Full attribution: [NOTICE](NOTICE).
 
-Status: early; built for personal use first, preparing for a public
-release.
+Status: early (v0.1.0); built for the author's daily use first — the
+adapter contract may still evolve.
